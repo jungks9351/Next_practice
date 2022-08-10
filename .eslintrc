@@ -1,0 +1,25 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "commonjs": true,
+    "es6": true
+  },
+  "extends": ["next", "prettier"],
+  "rules": {
+    "no-console": "warn",
+    "camelcase": "off",
+    "prettier/prettier": "off",
+    "no-unused-vars": "warn",
+    "no-plusplus": "off",
+    "no-shadow": "off",
+    "react/prop-types": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "react/jsx-filename-extension": [
+      "warn",
+      { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+    ],
+    "react/react-in-jsx-scope": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off"
+  }
+}
