@@ -1,19 +1,20 @@
 import axios from 'axios'
+import MovieContainer from 'components/movie/MovieContainer'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 
-const Home = ({ data }) => {
+const Home = ({
+  data,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const movieList = data.results
   return (
     <>
       <h1 className="text-3xl underline text-red-600">Hello Next.js</h1>
-      <ul>
-        {movieList.map((movieData) => (
-          <li key={movieData.id}>{movieData.title}</li>
-        ))}
-      </ul>
+      <MovieContainer movieList={movieList} />
     </>
   )
 }
-Home.getInitialProps = async () => {
+
+export const getServerSideProps: GetServerSideProps = async () => {
   const data = await axios
     .get('https://api.themoviedb.org/3/movie/popular', {
       headers: {
@@ -28,7 +29,7 @@ Home.getInitialProps = async () => {
     .then((res) => res.data)
 
   return {
-    data,
+    props: { data: data },
   }
 }
 
